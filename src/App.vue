@@ -2,13 +2,17 @@
   <div class="showcase">
     <tree-view :nodes=nodes :dark="true"></tree-view>
     <list-box :items="listItems" :dark="true"></list-box>
+    <data-grid :header="dataHeader" :items="dataItems" :dark="true"></data-grid>
+    <date-time-picker :dark="true"></date-time-picker>
   </div>
 </template>
 
 <script>
+import DataGrid from './components/DataGrid.vue'
+import DateTimePicker from './components/DateTimePicker.vue'
 import ListBox from './components/ListBox.vue'
 import TreeView from './components/TreeView.vue'
-import {NodeItem,ListItem} from './types'
+import {NodeItem,ListItem, DataGridHeader, DataGridHeaderItem, Person} from './types'
 
 export default {
 	data:function(){
@@ -42,13 +46,32 @@ export default {
         new ListItem("div",'→ this is ordinary div'),
         new ListItem("div",'↓↓ image'),
         new ListItem("img",'https://www.transparentpng.com/thumb/brush-stroke/long-wide-black-brush-stroke-banner-png-transparent--mRgNac.png'),
+      ],
+      dataHeader:new DataGridHeader([
+        new DataGridHeaderItem("Name","name","text"),
+        new DataGridHeaderItem("Last name","lastName","text"),
+        new DataGridHeaderItem("Age","age","number"),
+        new DataGridHeaderItem("Log","log","","code"),
+      ]),
+      dataItems:[
+        new Person("Lukas","Safranek",17),
+        new Person("Martin","Vejman",17),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
+        new Person("Martin","Svoboda",5),
       ]
     }
   },
   name: 'App',
   components: {
     TreeView,
-    ListBox
+    ListBox,
+    DataGrid,
+    DateTimePicker
   }
 }
 </script>

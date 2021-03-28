@@ -24,8 +24,9 @@ export default {
         onClick(){
             this.node.toggle();
             if (this.node.nodes.length == 0) {
+                let flag = (this.selected.has(this.node.id));
                 this.selected.clear()
-                this.selected.add(this.node.id);
+                if (!flag) this.selected.add(this.node.id);
             }
         }
     }
